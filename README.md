@@ -16,8 +16,8 @@ The application will utilize the Google Maps API to geolocate a user and then fi
 
 ## Resources
 * Lynda.com, CodeAcademy, Youtube Tutorials
-* Start Developing iOS Apps
-* Google Maps SDK for iOS
+* [Start Developing iOS Apps](https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/index.html#//apple_ref/doc/uid/TP40015214-CH2-SW1)
+* [Google Maps SDK for iOS](https://developers.google.com/maps/documentation/ios-sdk/start)
 * Stack Overflow Q&A’s
 * The Swift Programming Language (Swift 4.0.3)
 * A Concise Introduction to Software Engineering - Jalote
