@@ -9,15 +9,30 @@
 import UIKit
 
 class ViewController: UIViewController {
+
+
+
+    @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
+
     
-    
+    var menuShowing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
- 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+
+    
+    @IBAction func openMenu(_ sender: Any) {
+        
+        if (menuShowing){
+            leadingConstraint.constant = -140
+        }
+        else{
+            leadingConstraint.constant = 0
+        }
+        
+        menuShowing = !menuShowing
     }
+    
 }
 
