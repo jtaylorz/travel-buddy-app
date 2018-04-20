@@ -195,6 +195,7 @@
 				TargetAttributes = {
 					83530BC62075286100AEEFCA = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 5BM2J52SP2;
 						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 					};
@@ -418,6 +419,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 5BM2J52SP2;
 				INFOPLIST_FILE = LoginWindow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.travelbuddies.LoginWindow;
@@ -433,6 +435,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 5BM2J52SP2;
 				INFOPLIST_FILE = LoginWindow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.travelbuddies.LoginWindow;
