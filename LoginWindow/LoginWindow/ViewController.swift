@@ -7,18 +7,31 @@
 //
 
 import UIKit
+import AWSAuthCore
+import AWSAuthUI
 
 class ViewController: UIViewController {
 
-
-
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
-
     
     var menuShowing = false
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        if !AWSSignInManager.sharedInstance().isLoggedIn {
+            AWSAuthUIViewController
+                .presentViewController(with: self.navigationController!,
+                                       configuration: nil,
+                                       completionHandler: { (provider: AWSSignInProvider, error: Error?) in
+                                        if error != nil {
+                                            print("Error occured: \(String(describing: error))")
+                                        } else{
+                                            // Sign in successful.
+                                        }
+                })
+        }
     }
 
     
