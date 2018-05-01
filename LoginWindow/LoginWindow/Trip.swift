@@ -21,8 +21,10 @@ class Trip: AWSDynamoDBObjectModel, AWSDynamoDBModeling {
     var _month: String?
     var _date: String?
     var _day: NSNumber?
-    var _length: String?
-    var _numParticipants: String?
+    var _length: NSNumber?
+    var _creationDate: String?
+    var _numCommitted: NSNumber?
+    var _numParticipants: NSNumber?
     
     class func dynamoDBTableName() -> String {
 
@@ -46,6 +48,8 @@ class Trip: AWSDynamoDBObjectModel, AWSDynamoDBModeling {
                "_date" : "Date",
                "_day" : "Day",
                "_length" : "Length",
+               "_creationDate" : "creationDate",
+               "_numCommitted" : "numCommitted",
                "_numParticipants" : "numParticipants",
         ]
     }
