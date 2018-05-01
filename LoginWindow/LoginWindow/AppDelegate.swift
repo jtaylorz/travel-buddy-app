@@ -9,12 +9,12 @@
 import UIKit
 import AWSMobileClient
 import AWSCore
+import AWSDynamoDB
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    //Test comment to show how git works
 
     func application(_ application: UIApplication, open url: URL,
                      sourceApplication: String?, annotation: Any) -> Bool {

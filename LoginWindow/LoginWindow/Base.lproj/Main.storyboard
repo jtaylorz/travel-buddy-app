@@ -41,9 +41,6 @@
                                 <rect key="frame" x="43" y="265" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Log in"/>
-                                <connections>
-                                    <segue destination="uhY-xb-CDV" kind="show" id="twP-vv-Ja8"/>
-                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Sij-JA-nb7">
                                 <rect key="frame" x="43" y="93" width="288" height="80"/>
@@ -241,7 +238,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Sign Out"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" id="ghL-Wo-MB1"/>
+                                            <action selector="signOutButton:" destination="VRU-Pv-3TN" eventType="touchUpInside" id="TMS-VM-sFQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -285,7 +282,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wD2-tI-dN1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1666.875" y="917.95774647887322"/>
+            <point key="canvasLocation" x="1666.4000000000001" y="917.09145427286364"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="aYi-lH-mMp">
@@ -372,6 +369,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ghL-Wo-MB1"/>
+        <segue reference="Ba9-9t-N3a"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -15,39 +15,31 @@ import AWSAuthUI
 
 class ViewController: UIViewController {
     
+    
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var tripTypePicker: UIPickerView!
     var menuShowing = false
-    var tripPicker: tripTypePicker!
     @IBOutlet weak var textfield: UITextField!
     
     public var identityId: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tripPicker = tripTypePicker as! tripTypePicker?
-        tripPicker.tripData = Type.getType()
-        
-        tripTypePicker.delegate = tripPicker
-        tripTypePicker.dataSource = tripPicker
-        
         showSignIn()
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func signOutButtonPress(_ sender: Any) {
+    @IBAction func signOutButton(_ sender: UIButton) {
         AWSSignInManager.sharedInstance().logout(completionHandler: {(result: Any?, error: Error?) in
             self.showSignIn()
             // print("Sign-out Successful: \(signInProvider.getDisplayName)");
             
         })
-        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     
