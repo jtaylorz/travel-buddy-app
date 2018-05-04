@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		477DA8D32098050F00DD4C6A /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477DA8D22098050F00DD4C6A /* Trip.swift */; };
+		4785ECAE209C1D0B006885D4 /* TripObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4785ECAD209C1D0B006885D4 /* TripObj.swift */; };
 		47CB0ABF20926C77002D686D /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 47CB0ABE20926C77002D686D /* awsconfiguration.json */; };
 		6CEE65D4FCE5C1F4D9656AC0 /* Pods_LoginWindow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186C0AFFB22134EBAD26CEFA /* Pods_LoginWindow.framework */; };
 		83530BCB2075286100AEEFCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83530BCA2075286100AEEFCA /* AppDelegate.swift */; };
@@ -43,6 +44,7 @@
 		186C0AFFB22134EBAD26CEFA /* Pods_LoginWindow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoginWindow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		457F7ACFA3DAC865ED500A68 /* Pods_LoginWindowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoginWindowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		477DA8D22098050F00DD4C6A /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		4785ECAD209C1D0B006885D4 /* TripObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripObj.swift; sourceTree = "<group>"; };
 		47CB0ABE20926C77002D686D /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		5A234261BA3FDC04E89CA167 /* Pods-LoginWindowTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginWindowTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LoginWindowTests/Pods-LoginWindowTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6694FF9BBF1B3C632B685A88 /* Pods-LoginWindowUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginWindowUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoginWindowUITests/Pods-LoginWindowUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				83530BD62075286100AEEFCA /* Info.plist */,
 				47CB0ABE20926C77002D686D /* awsconfiguration.json */,
 				A27D026220810B3C0035F8E6 /* LoginWindow-Bridging-Header.h */,
+				4785ECAD209C1D0B006885D4 /* TripObj.swift */,
 				477DA8D22098050F00DD4C6A /* Trip.swift */,
 			);
 			path = LoginWindow;
@@ -407,6 +410,7 @@
 			files = (
 				477DA8D32098050F00DD4C6A /* Trip.swift in Sources */,
 				83530BCD2075286100AEEFCA /* ViewController.swift in Sources */,
+				4785ECAE209C1D0B006885D4 /* TripObj.swift in Sources */,
 				83530BCB2075286100AEEFCA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -588,7 +592,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "LoginWindow/LoginWindow-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -606,7 +610,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LoginWindow/LoginWindow-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

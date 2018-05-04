@@ -75,34 +75,36 @@ class ViewController: UIViewController {
 
 class TripCreationViewController : UIViewController {
     
-    // MARK: Properties
+    // MARK: Properties    
+    @IBOutlet weak var tripNameField: UITextField!
     @IBOutlet weak var tripTypeField: UITextField!
-    @IBOutlet weak var tripMonthField: UITextField!
-    @IBOutlet weak var tripDayField: UITextField!
-    @IBOutlet weak var tripLength: UITextField!
-    @IBOutlet weak var tripMaxField: UITextField!
+    @IBOutlet weak var tripDestinationField: UITextField!
+    @IBOutlet weak var startDatePicker: UIDatePicker!
+    @IBOutlet weak var endDatePicker: UIDatePicker!
     
     
     // MARK: Actions
     @IBAction func createTrip(_ sender: UIButton) {
-        saveTrip(type : tripTypeField.text, month : tripMonthField.text, day : tripDayField.text, length : tripLength.text, numParticipants : tripMaxField.text)
+        saveTrip(name : tripNameField.text, type : tripTypeField.text, destination : tripDestinationField.text, startDate : startDatePicker.date, endDate : endDatePicker.date )
     }
     
-    func saveTrip(type : String?, month : String?, day: String?, length : String?, numParticipants: String?) {
+    func saveTrip(name : String?, type : String?, destination : String?, startDate: Date?, endDate: Date?) {
         let dynamoDbObjectMapper = AWSDynamoDBObjectMapper.default()
         
         // Create data object using data models you downloaded from Mobile Hub
-        let tripItem: Trip = Trip()
+        let tripItem: TripObj = TripObj()
         
+        tripItem._name = name
         tripItem._type = type
-        tripItem._month = month
-        tripItem._day = 1
-        tripItem._date = month
+        tripItem._destination = destination
+        tripItem._startDate = (startDate as! NSDate).timeIntervalSince1970 as NSNumber
+        tripItem._endDate = (endDate as! NSDate).timeIntervalSince1970 as NSNumber
+        tripItem._createdDate = NSDate().timeIntervalSince1970 as NSNumber
         tripItem._length = 1
         tripItem._numParticipants = 20
         tripItem._numCommitted = 1
-        
-        tripItem._creationDate = "May 10"
+        tripItem._expectedCost = 1
+        tripItem._notes = "Some notes..."
         
         //Save a new item
         dynamoDbObjectMapper.save(tripItem, completionHandler: {
@@ -116,5 +118,9 @@ class TripCreationViewController : UIViewController {
         })
         
     }
+    
+}
+
+class TripSelectionViewController : UIViewController {
     
 }
