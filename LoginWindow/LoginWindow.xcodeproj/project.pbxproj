@@ -18,6 +18,7 @@
 		83530BD52075286100AEEFCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83530BD32075286100AEEFCA /* LaunchScreen.storyboard */; };
 		83530BE02075286100AEEFCA /* LoginWindowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83530BDF2075286100AEEFCA /* LoginWindowTests.swift */; };
 		83530BEB2075286100AEEFCA /* LoginWindowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83530BEA2075286100AEEFCA /* LoginWindowUITests.swift */; };
+		8C52C6ED20A088AD0029AD7B /* Screen Shot 2018-05-06 at 10.19.22 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C52C6EC20A088AD0029AD7B /* Screen Shot 2018-05-06 at 10.19.22 PM.png */; };
 		CC5EB83E8E21EFF09D1D9AEB /* Pods_LoginWindowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457F7ACFA3DAC865ED500A68 /* Pods_LoginWindowTests.framework */; };
 		F6423150518B56DDC0F5BEB5 /* Pods_LoginWindowUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A9446C03334AAB191440E7 /* Pods_LoginWindowUITests.framework */; };
 /* End PBXBuildFile section */
@@ -63,6 +64,7 @@
 		83530BE62075286100AEEFCA /* LoginWindowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginWindowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83530BEA2075286100AEEFCA /* LoginWindowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWindowUITests.swift; sourceTree = "<group>"; };
 		83530BEC2075286100AEEFCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C52C6EC20A088AD0029AD7B /* Screen Shot 2018-05-06 at 10.19.22 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Screen Shot 2018-05-06 at 10.19.22 PM.png"; path = "../../../Screen Shot 2018-05-06 at 10.19.22 PM.png"; sourceTree = "<group>"; };
 		A27D026220810B3C0035F8E6 /* LoginWindow-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LoginWindow-Bridging-Header.h"; sourceTree = "<group>"; };
 		DC377FB507B6D75D246E2037 /* Pods-LoginWindowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginWindowUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LoginWindowUITests/Pods-LoginWindowUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E6F9C4E4E2C6970E09F02B9B /* Pods-LoginWindowTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginWindowTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoginWindowTests/Pods-LoginWindowTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		83530BC92075286100AEEFCA /* LoginWindow */ = {
 			isa = PBXGroup;
 			children = (
+				8C52C6EC20A088AD0029AD7B /* Screen Shot 2018-05-06 at 10.19.22 PM.png */,
 				83530BCA2075286100AEEFCA /* AppDelegate.swift */,
 				83530BCC2075286100AEEFCA /* ViewController.swift */,
 				83530BCE2075286100AEEFCA /* Main.storyboard */,
@@ -292,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47CB0ABF20926C77002D686D /* awsconfiguration.json in Resources */,
+				8C52C6ED20A088AD0029AD7B /* Screen Shot 2018-05-06 at 10.19.22 PM.png in Resources */,
 				83530BD52075286100AEEFCA /* LaunchScreen.storyboard in Resources */,
 				83530BD22075286100AEEFCA /* Assets.xcassets in Resources */,
 				83530BD02075286100AEEFCA /* Main.storyboard in Resources */,

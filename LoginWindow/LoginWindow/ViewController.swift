@@ -27,7 +27,36 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         showSignIn()
+    }
+    
+//    let interests = ["hiking", "biking", "sightseeig", "kayaking", "surfing"]
+    
+    
+    @IBOutlet weak var interestText: UILabel!
+    
+    @IBOutlet weak var statusBar: UITextField!
+    
+    @IBOutlet weak var newStatus: UILabel!
+
+    @IBOutlet weak var newInt: UITextField!
+    // MARK: Actions
+    
+   
+    @IBAction func changeInterest(_ sender: Any) {
+        interestText.text = newInt.text
         
+        newInt.isHidden = true
+    }
+    
+    @IBAction func postStatus(_ sender: Any) {
+        
+        newStatus.text = statusBar.text
+        newStatus.isHidden = false
+        statusBar.isHidden = true
+        
+//        if statusBar.isHidden == true{
+//            statusBar.isHidden = false
+//        }
     }
     
     // MARK: Actions
