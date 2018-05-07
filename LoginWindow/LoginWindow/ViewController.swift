@@ -26,18 +26,18 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        showSignIn()
+        showSignIn()
         
     }
     
     // MARK: Actions
-//    @IBAction func signOutButton(_ sender: UIButton) {
-//        AWSSignInManager.sharedInstance().logout(completionHandler: {(result: Any?, error: Error?) in
-//            self.showSignIn()
-//            // print("Sign-out Successful: \(signInProvider.getDisplayName)");
-//
-//        })
-//    }
+    @IBAction func signOutButton(_ sender: UIButton) {
+        AWSSignInManager.sharedInstance().logout(completionHandler: {(result: Any?, error: Error?) in
+            self.showSignIn()
+            // print("Sign-out Successful: \(signInProvider.getDisplayName)");
+
+        })
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -45,17 +45,17 @@ class ViewController: UIViewController {
     }
     
     
-//    func showSignIn() {
-//        AWSAuthUIViewController.presentViewController(with: self.navigationController!, configuration: nil, completionHandler: {
-//            (provider: AWSSignInProvider, error: Error?) in
-//            if error != nil {
-//                print("Error occurred: \(String(describing: error))")
-//            } else {
-//                print("Sign-in successful.")
-//
-//            }
-//        })
-//    }
+    func showSignIn() {
+        AWSAuthUIViewController.presentViewController(with: self.navigationController!, configuration: nil, completionHandler: {
+            (provider: AWSSignInProvider, error: Error?) in
+            if error != nil {
+                print("Error occurred: \(String(describing: error))")
+            } else {
+                print("Sign-in successful.")
+
+            }
+        })
+    }
 
     
     @IBAction func openMenu(_ sender: Any) {
@@ -79,14 +79,15 @@ class TripCreationViewController : UIViewController {
     @IBOutlet weak var tripNameField: UITextField!
     @IBOutlet weak var tripTypeField: UITextField!
     @IBOutlet weak var tripDestinationField: UITextField!
-    @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var numParticipantsField: UITextField!
     @IBOutlet weak var expectedCostField: UITextField!
+    @IBOutlet weak var startDatePicker: UIDatePicker!
+    @IBOutlet weak var endDatePicker: UIDatePicker!
     
     
     // MARK: Actions
     @IBAction func createTrip(_ sender: UIButton) {
-        saveTrip(name : tripNameField.text, type : tripTypeField.text, destination : tripDestinationField.text, numParticipants : numParticipantsField.text, expectedCost : expectedCostField.text, startDate : startDatePicker.date)
+        saveTrip(name : tripNameField.text, type : tripTypeField.text, destination : tripDestinationField.text, numParticipants : numParticipantsField.text, expectedCost : expectedCostField.text, startDate : startDatePicker.date, endDate : endDatePicker.date)
         tripNameField.text = ""
         tripTypeField.text = ""
         tripDestinationField.text = ""
@@ -94,7 +95,7 @@ class TripCreationViewController : UIViewController {
         expectedCostField.text = ""
     }
     
-    func saveTrip(name : String?, type : String?, destination : String?, numParticipants : String?, expectedCost : String?, startDate: Date?) {
+    func saveTrip(name : String?, type : String?, destination : String?, numParticipants : String?, expectedCost : String?, startDate: Date?, endDate: Date?) {
         let dynamoDbObjectMapper = AWSDynamoDBObjectMapper.default()
         
         // Create data object using data models you downloaded from Mobile Hub
@@ -104,7 +105,7 @@ class TripCreationViewController : UIViewController {
         tripItem._type = type
         tripItem._destination = destination
         tripItem._startDate = (startDate as! NSDate).timeIntervalSince1970 as NSNumber
-        tripItem._endDate = (startDate as! NSDate).timeIntervalSince1970 as NSNumber
+        tripItem._endDate = (endDate as! NSDate).timeIntervalSince1970 as NSNumber
         tripItem._createdDate = NSDate().timeIntervalSince1970 as NSNumber
         tripItem._length = 1
         tripItem._numParticipants = (numParticipants as! NSString).integerValue as! NSNumber
@@ -128,5 +129,75 @@ class TripCreationViewController : UIViewController {
 }
 
 class TripSelectionViewController : UIViewController {
+    
+    // MARK: Properties
+    @IBOutlet weak var queryField: UITextField!
+    
+    @IBOutlet weak var queriedTripName: UILabel!
+    
+    
+    // MARK: Actions
+    @IBAction func searchButtonPress(_ sender: UIButton) {
+        let tripName = queryTrip(creationDateQuery: queryField.text)
+        queriedTripName.text = tripName
+    }
+    
+    
+    func queryTrip(creationDateQuery: String?) -> String? {
+        // 1) Configure the query
+        let queryExpression = AWSDynamoDBQueryExpression()
+        queryExpression.keyConditionExpression = "createdDate = :_createdDate"
+        
+        let queryNSNum = (creationDateQuery as! NSString).doubleValue as! NSNumber
+        
+        queryExpression.expressionAttributeValues = [
+            ":_createdDate": queryNSNum
+        ]
+        
+        // 2) Make the query
+        
+        let dynamoDbObjectMapper = AWSDynamoDBObjectMapper.default()
+        
+        dynamoDbObjectMapper.query(TripObj.self, expression: queryExpression) { (output: AWSDynamoDBPaginatedOutput?, error: Error?) in
+            if error != nil {
+                print("The request failed. Error: \(String(describing: error))")
+            }
+            if output != nil {
+                print("In IF")
+                for trip in output!.items {
+                    let tripItem = trip as? TripObj
+                    print("Trip Name: \(tripItem!._name!)")
+                    print("Trip Type: \(tripItem!._type!)")
+                    print("Trip Destination: \(tripItem!._destination!)")
+                    print("Trip Cost: $\(tripItem!._expectedCost!)")
+                }
+            }
+        }
+        return "Test"
+    }
+    
+    
+//    func readItem() {
+//        let dynamoDbObjectMapper = AWSDynamoDBObjectMapper.default()
+//
+//        // Create adata object using the data models downloaded from Mobile Hub
+//        let tripItem: TripObj = TripObj();
+//        tripItem._createdDate = AWSIdentityManager.default().identityId
+//
+//        dynamoDbObjectMapper.load(
+//            TripObj.self,
+//            hashKey : tripItem._createdDate,
+//            rangeKey : "",
+//            completionHandler : {
+//                (objectModel : AWSDynamoDBObjectModel?, error : Error?) -> Void in
+//                if let error = error {
+//                    print("Amazon DynamoDB Read Error: \(error)")
+//                    return
+//                }
+//                print("An item was read")
+//        })
+//    }
+    
+    
     
 }
