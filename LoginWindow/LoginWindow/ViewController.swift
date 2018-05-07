@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     
    
     @IBAction func changeInterest(_ sender: Any) {
-        interestText.text = newInt.text
+        interestText.text = (interestText.text ?? "") + ", " + (newInt.text!)
         
     }
     
