@@ -45,7 +45,6 @@ class ViewController: UIViewController {
     @IBAction func changeInterest(_ sender: Any) {
         interestText.text = newInt.text
         
-        newInt.isHidden = true
     }
     
     @IBAction func postStatus(_ sender: Any) {
