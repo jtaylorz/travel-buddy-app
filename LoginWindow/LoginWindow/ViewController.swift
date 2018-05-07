@@ -26,18 +26,18 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        showSignIn()
+//        showSignIn()
         
     }
     
     // MARK: Actions
-    @IBAction func signOutButton(_ sender: UIButton) {
-        AWSSignInManager.sharedInstance().logout(completionHandler: {(result: Any?, error: Error?) in
-            self.showSignIn()
-            // print("Sign-out Successful: \(signInProvider.getDisplayName)");
-            
-        })
-    }
+//    @IBAction func signOutButton(_ sender: UIButton) {
+//        AWSSignInManager.sharedInstance().logout(completionHandler: {(result: Any?, error: Error?) in
+//            self.showSignIn()
+//            // print("Sign-out Successful: \(signInProvider.getDisplayName)");
+//
+//        })
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -45,17 +45,17 @@ class ViewController: UIViewController {
     }
     
     
-    func showSignIn() {
-        AWSAuthUIViewController.presentViewController(with: self.navigationController!, configuration: nil, completionHandler: {
-            (provider: AWSSignInProvider, error: Error?) in
-            if error != nil {
-                print("Error occurred: \(String(describing: error))")
-            } else {
-                print("Sign-in successful.")
-                
-            }
-        })
-    }
+//    func showSignIn() {
+//        AWSAuthUIViewController.presentViewController(with: self.navigationController!, configuration: nil, completionHandler: {
+//            (provider: AWSSignInProvider, error: Error?) in
+//            if error != nil {
+//                print("Error occurred: \(String(describing: error))")
+//            } else {
+//                print("Sign-in successful.")
+//
+//            }
+//        })
+//    }
 
     
     @IBAction func openMenu(_ sender: Any) {
@@ -80,15 +80,21 @@ class TripCreationViewController : UIViewController {
     @IBOutlet weak var tripTypeField: UITextField!
     @IBOutlet weak var tripDestinationField: UITextField!
     @IBOutlet weak var startDatePicker: UIDatePicker!
-    @IBOutlet weak var endDatePicker: UIDatePicker!
+    @IBOutlet weak var numParticipantsField: UITextField!
+    @IBOutlet weak var expectedCostField: UITextField!
     
     
     // MARK: Actions
     @IBAction func createTrip(_ sender: UIButton) {
-        saveTrip(name : tripNameField.text, type : tripTypeField.text, destination : tripDestinationField.text, startDate : startDatePicker.date, endDate : endDatePicker.date )
+        saveTrip(name : tripNameField.text, type : tripTypeField.text, destination : tripDestinationField.text, numParticipants : numParticipantsField.text, expectedCost : expectedCostField.text, startDate : startDatePicker.date)
+        tripNameField.text = ""
+        tripTypeField.text = ""
+        tripDestinationField.text = ""
+        numParticipantsField.text = ""
+        expectedCostField.text = ""
     }
     
-    func saveTrip(name : String?, type : String?, destination : String?, startDate: Date?, endDate: Date?) {
+    func saveTrip(name : String?, type : String?, destination : String?, numParticipants : String?, expectedCost : String?, startDate: Date?) {
         let dynamoDbObjectMapper = AWSDynamoDBObjectMapper.default()
         
         // Create data object using data models you downloaded from Mobile Hub
@@ -98,12 +104,12 @@ class TripCreationViewController : UIViewController {
         tripItem._type = type
         tripItem._destination = destination
         tripItem._startDate = (startDate as! NSDate).timeIntervalSince1970 as NSNumber
-        tripItem._endDate = (endDate as! NSDate).timeIntervalSince1970 as NSNumber
+        tripItem._endDate = (startDate as! NSDate).timeIntervalSince1970 as NSNumber
         tripItem._createdDate = NSDate().timeIntervalSince1970 as NSNumber
         tripItem._length = 1
-        tripItem._numParticipants = 20
+        tripItem._numParticipants = (numParticipants as! NSString).integerValue as! NSNumber
         tripItem._numCommitted = 1
-        tripItem._expectedCost = 1
+        tripItem._expectedCost = (expectedCost as! NSString).integerValue as! NSNumber
         tripItem._notes = "Some notes..."
         
         //Save a new item
